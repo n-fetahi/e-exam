@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <title>add question</title>
+        <link rel="stylesheet" href="../../../static/eExamApp/bootstap/bootstrap.css">
+        <link rel="stylesheet" href="../../../static/eExamApp/main/oter_css.css">
+
+      </head>
+<body >
+
+
+  <div class="container mt-3 container-dark"> 
+    <table class="table row table2">
+    <thead class="e-exam-primary-color">
+       
+ 
+      <tr class="row justify-content-start">
+         <td class="col-2"><button onclick="set_defult_val(1);" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+          ادراج سؤال
+        </button></td>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% include "eExamApp\\teacher\edit_model_questions.html" %}
+
+      {% for question in questions%}
+      <tr class="items row justify-content-start ">
+
+        <td class="col-10" >{{question}} </td>
+        <td 
+         class="col-1  align-self-center"><a onclick="set_defult_val('{{options|length}}');" href="{% url 'model' %}?q=s_edit&id={{question.id}}"><img width="18px" height="18px" src="../../../static/eExamApp/images/pencil.png" alt=""></a></td>
+         <td 
+         class="col-1   align-self-center"><a href="{% url 'model' %}?q=m_delete&id={{question.id}}"><img width="18px" height="18px" src="../../../static/eExamApp/images/delete.png" alt=""></a></td>
+
+      </tr>
+    
+      {% endfor %}
+
+    </tbody>
+  </table>
+  <div class=" row justify-content-end ">
+    <a type="button" class="btn save-button col-2 mx-4" href="{% url 'teacher_home' %}?route=model">
+      حفظ 
+    </a>
+  </div>
+</div>
+
+
+  {% include "eExamApp\\teacher\delete_model_questions.html" %}
+
+
+  {% include "eExamApp\\teacher\add_model_questions.html" %}
+
+
+  <script src="../../../static/eExamApp/js/popper.min.js"></script>
+  <script src="../../../static/eExamApp/js/jquery-3.6.3.min.js"></script>
+  <script src="../../../static/eExamApp/js/bootstrap.js"></script>
+  <script src="../../../static/eExamApp/js/bootstrap.bundle.js"></script>
+  <script src="../../../static/eExamApp/js/methods.js" type="text/javascript"></script>
+
+  {% if model == '#deletModal' %}
+      
+  <script>
+    get_model('{{model}}');
+    </script>
+
+  {% elif model == '#editModal' %}
+
+<script>
+  get_model('{{model}}');
+  </script>
+
+  {% endif %}
+
+
+</body>
+</html>

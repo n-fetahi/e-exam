@@ -1,0 +1,23 @@
+{% extends 'eExamApp\home.html' %}
+
+{% block home_body %}
+  
+  <!--------------------- teacher_header -------------------------->
+    {% include "eExamApp\teacher\teacher_header.html" %}
+
+  <!--------------------- teacher_body -------------------------->
+              {% if view == 'dashboard' %}
+                 {% include "eExamApp\\teacher\dashboard.html" %}
+              {% elif view == 'students' %}
+                 {% include "eExamApp\\teacher\students.html" %} 
+
+              {% endif %}
+
+              {% include "eExamApp\\teacher\instruction.html" %}
+            
+
+             
+
+{% endblock home_body %}
+
+
