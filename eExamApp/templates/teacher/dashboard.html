@@ -1,0 +1,122 @@
+
+     <div class="container mt-3 container-dark"> 
+        <table class="table row table2">
+        <thead class="e-exam-primary-color">
+          <tr class="row h-60 ">
+
+            <th class="col-4 ">  
+              
+               <form class="card p-1 card-form" dir="ltr">
+              <div class="input-group input-group-sm">
+                <input type="text" class="form-control " placeholder="Promo code">
+                <button type="submit" class="btn search-form">بحث</button>
+              </div>
+            </form></th>
+          </tr> 
+
+          <tr class="row">
+             
+
+            <th class="col-4">اسم النموذج</th>
+            <th class="col-3">عدد الأسئلة</th>
+            <th class="col-3">الــزمــــــن</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+
+          
+          {% for model in models %}
+              <tr class="items row ">
+
+                <td class="col-4  align-self-center">{{model}}</td>
+                <td class="col-3 align-self-center">20 سؤال</td>
+                <td class="col-3 align-self-center">{{model.exam_duration}}</td>
+                <td class="col-1 align-self-center"><a href="#"><img width="18px" height="18px" src="../../../static/eExamApp/images/pencil.png" alt=""></a></td>
+                <td class="col-1 align-self-center"><a href="#"><img width="18px" height="18px" src="../../../static/eExamApp/images/delete.png" alt=""></a></td>
+
+              </tr>
+          {% endfor%}
+        
+ 
+          <tr class="items row justify-content-center">
+            
+            <th class="col-3"><a href="#" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <svg id="plus-circle-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="15.394" height="15.394" viewBox="0 0 26.394 26.394">
+              <path id="Path_11" data-name="Path 11" d="M13.515,6a1.253,1.253,0,0,1,1.253,1.253v5.01h5.01a1.253,1.253,0,1,1,0,2.505h-5.01v5.01a1.253,1.253,0,0,1-2.505,0v-5.01H7.253a1.253,1.253,0,1,1,0-2.505h5.01V7.253A1.253,1.253,0,0,1,13.515,6Z" transform="translate(-0.318 -0.318)" fill="#08a1ff"/>
+              <path id="Path_12" data-name="Path 12" d="M1,14.2a13.2,13.2,0,1,1,13.2,13.2A13.2,13.2,0,0,1,1,14.2ZM14.2,3.4a10.8,10.8,0,1,0,10.8,10.8A10.8,10.8,0,0,0,14.2,3.4Z" transform="translate(-1 -1)" fill="#08a1ff" fill-rule="evenodd"/>
+            </svg>
+            نموذج جديد
+
+            </a>
+          </th>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="padding-top: 120px;padding-right: 100px;" >
+ <div class="modal-dialog">
+   <div class="modal-content" style="width: 400px;">
+     <div class="modal-header" style="background-color:#145b81; color: white;text-align: center;">
+       <h1 class="modal-title fs-5" id="staticBackdropLabel">  نموذج جديد</h1>
+       
+       <form action="{% url 'model' %}" method="post">
+        {% csrf_token %}
+       </div>
+       <div class="modal-body">
+  
+  
+         <div class="row">
+           <div class="col-4">
+            <h1 style="font-size: 15px;"> اسم النموذج</h1>
+           </div>
+           <div class="col-8">
+             <input required class="form-control" list="datalistOptions" id="nm" name="name">
+           </div>
+          
+         </div>
+  
+         <div class="row">
+           
+  
+  
+           <div class="col-4">
+             <br>
+            <h1 style="font-size: 15px; padding-top: 8px;"> زمن الاختبار </h1>
+           </div>
+           <div class="col-3">
+             <br>
+           <input name="min" required type="number"  min="00" max="60" class="form-control" maxlength="2" placeholder="00">
+           </div>
+           <div style="font-size: 20px; font-weight: bold; font-family: 'Courier New', Courier, monospace;" class="col-1">
+            <br>
+            :</div>
+  
+           <div class="col-3">
+            <br>
+  
+          <input name="hour" required type="number" class="form-control" maxlength="2" min="0" max="12" placeholder="2" aria-errormessage="k,,,v">
+  
+          </div>
+           
+              
+  
+         </div>
+              
+       
+       
+          
+         </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">الغاء</button>
+         <button type="submit" class="btn btn-outline-primary">إضافة</button>
+       </div>
+        
+       </form>
+
+ 
+   </div>
+ </div>
+</div>
