@@ -1,0 +1,129 @@
+ /* Reset the default styles of the form */
+ @font-face {
+    font-family: 'Cairo';
+    src: url('../fonts/Cairo/Cairo-Bold.ttf')format('truetype'),
+    local('Cairo');
+  }
+  
+
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Set a background color for the page */
+  body {
+    background-color: #f2f2f2;
+    font-family: 'Cairo',sans-serif;
+    direction: rtl;
+  }
+  
+  /* Center the form vertically and horizontally */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Style the form */
+  form {
+    
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+  }
+  
+  /* Style the form title */
+  .form-title {
+   background-color: #1f7ba2;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  /* Style the form fields */
+  .form-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+    width: 100%;
+    direction: rtl;
+
+  }
+  
+label {
+    margin-right: 10px;
+    margin-left: 20px;
+    width: 50px;
+    text-align: center;
+}
+  
+  .form-field input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+    width: 100%;
+    font-family: 'Cairo',sans-serif;
+    
+  }
+  
+  input[type=time]:focus {
+    outline: none;
+    background-color: #fff;
+    font-family: 'Cairo',sans-serif;
+
+}
+  
+  /* Style the submit button */
+  input[type=submit] {
+    background-color: #1f7ba2;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    float: left;
+    margin-top: 10px;
+    font-family: 'Cairo',sans-serif;
+
+  }
+  
+  input[type=submit]:hover {
+    background-color: #2c96c4;
+  }
+  
+  input[type=submit]:active {
+    background-color: #2c96c4;
+  }
+  
+  /* Style the form on smaller screens */
+  @media screen and (max-width: 600px) {
+    .form-field label, .form-field input[type=time], input[type=submit] {
+      font-size: 16px;
+      padding: 8px;
+    }
+    input[type=submit] {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+  }
+ 
+
+
+

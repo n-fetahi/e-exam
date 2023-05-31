@@ -1,0 +1,61 @@
+
+<div class="container mt-3 container-dark"> 
+    <table class="table row table2">
+    <thead class="e-exam-primary-color">
+      <tr class="row h-60 ">
+
+        <th class="col-6 ">  
+          
+           <form class="card p-1 card-form" dir="ltr">
+          <div class="input-group input-group-sm">
+
+            <button  type="button" class="btn dropdown-toggle search-form" data-bs-toggle="dropdown" aria-expanded="false">
+              عن طريق الرقم الأكاديمي
+            </button>
+            <ul class="dropdown-menu p-0">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+
+            <input type="text" class="form-control " placeholder="Promo code">
+            <button type="submit" class="btn search-form">بحث</button>
+          </div>
+        </form></th>
+      </tr> 
+       
+ 
+      <tr class="row">
+         
+
+        <th class="col-2">الرقم الأكاديمي</th>
+        <th class="col-4">اسم الطالب</th>
+        <th class="col-2">الدرجـــة</th>
+        <th class="col-2">عدد الإجابات</th>
+        <th class="col-2">التقييم</th>
+    
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for student in students %}
+      
+      <tr class="items row ">
+
+        <td class="col-2 align-self-center">{{student.academic_ID}}</td>
+        <td class="col-4  align-self-center">{{student.student_name}}</td>
+        <td class="col-2  align-self-center">80</td>
+        <td class="col-2 align-self-center valuation">12/15</td>
+        <td class="col-2 align-self-center valuation">ناجح</td>
+
+      </tr>
+      {% endfor %}
+
+    
+
+      
+    </tbody>
+  </table>
+</div>
