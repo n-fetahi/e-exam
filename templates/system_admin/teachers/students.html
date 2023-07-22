@@ -1,0 +1,118 @@
+{% extends 'system_admin/admin_home.html' %}
+
+{% block admin_home_body %}
+<div class="container mt-3 container-dark"> 
+  <table class="table row table2">
+  <thead class="e-exam-primary-color">
+    <tr class="row h-60 ">
+
+      <th class="col-6 ">  
+        
+         <form class="card p-1 card-form" dir="ltr">
+        <div class="input-group input-group-sm">
+
+          <button  type="button" class="btn dropdown-toggle search-form" data-bs-toggle="dropdown" aria-expanded="false">
+            عن طريق الرقم الأكاديمي
+          </button>
+          <ul class="dropdown-menu p-0">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+
+          <input type="text" class="form-control " placeholder="Promo code">
+          <button type="submit" class="btn search-form">بحث</button>
+        </div>
+      </form></th>
+    </tr> 
+     <tr class="row">
+      <form action="{% url 'teacher_home' %}" method="post">
+        {% csrf_token %} 
+
+        <tr class="select-container row justify-content-center " >
+
+        
+          <th class="col-3 ">
+            <label for="specialization"> التخصص</label>
+            <select class=""  name="specialization" >
+
+              <option value="{{specialization}}" >IT</option>
+
+              </select> 
+          </th>
+
+          <th class="col-3">
+           
+            <label for="level"> المستوى</label>
+          <select class=""  name="level" >
+
+
+            <option value="{{level}}" >أول</option>
+
+         </select> 
+          
+        </th>
+          
+          <th class="col-3">
+           
+              <label for="decision"> المقرر</label>
+            <select class=""  name="decision" >
+
+
+                <option value="{{decision.decision_ID}}" >برمجة 1</option>
+
+
+              </select> 
+           
+          </th>
+          <th class="col-2 align-self-start">
+            <input type="submit" class="btn btn-info " value="استعراض الطلاب" />
+          </th>    
+        </tr>
+
+      </form>
+     </tr>
+
+    <tr class="row">
+       
+
+      <th class="col-2">الرقم الأكاديمي</th>
+      <th class="col-3">اسم الطالب</th>
+      <th class="col-2">الدرجـــة</th>
+      <th class="col-2">عدد الإجابات</th>
+      <th class="col-2">التقييم</th>
+  
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for student in students %}
+    
+    <tr class="items row ">
+
+      <td class="col-2 align-self-center">{{student.academic_ID|add:8542945}}</td>
+      <td class="col-3  align-self-center">{{student.student_name}}</td>
+      <td class="col-2  align-self-center">60</td>
+      <td class="col-2 align-self-center  {% if forloop.counter == 5 %} text-danger  {% elif forloop.counter != 3 %} valuation {% else%} text-danger {% endif %}"> {% if forloop.counter == 5 %} محروم {% elif forloop.counter != 3 %} {{forloop.counter|add:forloop.counter|add:50}}/60 {% else%} 25/60 {% endif %}</td>
+      <td class="col-2 align-self-center  {% if forloop.counter == 5 %} text-danger  {% elif forloop.counter != 3 %} valuation {% else%} text-danger {% endif %}">{% if forloop.counter == 5 %} محروم  {% elif forloop.counter != 3 %} ناجح  {% else%} راسب {% endif %}</td>
+      {% if forloop.counter == 5 %} 
+      <td class="col-1">
+        
+        <input type="submit" class="btn btn-light "  value="تفاصيل"  />
+
+        </td>
+      {% endif %}
+
+    </tr>
+    {% endfor %}
+
+  
+
+    
+  </tbody>
+</table>
+</div>
+{% endblock admin_home_body %}
+

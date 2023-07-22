@@ -1,0 +1,29 @@
+body{
+    background-color: #5c6c72;
+    direction: rtl;
+}
+
+.nav-link{
+    color: #3f4a4f;
+}
+thead tr{
+    background-color: #66838f;
+}
+.e-exam-primary-color{
+    color: #000000;
+}
+tr{
+    color: #ffffff;
+}
+.small-container {
+    margin: 2.5rem 18rem;
+}
+
+td .btn{
+font-size: 12px;
+}
+
+
+.e-exam-primary-color {
+    background-color: #66838f;
+}
