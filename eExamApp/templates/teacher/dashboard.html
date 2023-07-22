@@ -1,0 +1,188 @@
+
+     <div class="container mt-3 container-dark"> 
+        <table class="table row table2">
+        <thead class="e-exam-primary-color">
+          <tr class="row h-60 ">
+
+            <th class="col-4 ">  
+              
+               <form class="card p-1 card-form" dir="ltr">
+              <div class="input-group input-group-sm">
+                <input dir="rtl" type="text" class="form-control " placeholder="أدخل إسم النموذج">
+                <button type="submit" class="btn search-form">بحث</button>
+              </div>
+            </form></th>
+          </tr> 
+
+          <form action="{% url 'teacher_home' %}" method="post">
+            {% csrf_token %} 
+
+            <tr class="select-container row justify-content-center " >
+
+            
+              <th class="col-3 ">
+                <label for="specialization"> التخصص</label>
+                <select class=""  name="specialization" >
+                  {% for specialization in specializations %}
+    
+                  <option value="{{specialization}}" >{{specialization}}</option>
+    
+                  {% endfor %}
+                  </select> 
+              </th>
+  
+              <th class="col-3">
+               
+                <label for="level"> المستوى</label>
+              <select class=""  name="level" >
+    
+                {% for level in levels %}
+    
+                <option value="{{level}}" >{{level}}</option>
+  
+                {% endfor %}
+            </select> 
+              
+            </th>
+              
+              <th class="col-3">
+               
+                  <label for="decision"> المقرر</label>
+                <select class=""  name="decision" >
+    
+                  {% for decision in decisions %}
+    
+                    <option value="{{decision.decision_ID}}"> {{decision.decision_ID}} </option>
+    
+                  {% endfor %}
+    
+                  </select> 
+               
+              </th>
+              <th class="col-2 align-self-start">
+                <input type="submit" class="btn btn-info " value="استعراض النماذج" />
+              </th>    
+            </tr>
+
+          </form>
+          
+
+          <tr class="row">
+            <th class="col-3">اسم النموذج</th>
+            <th class="col-2">الــزمــــــن</th>  
+          </tr>
+ 
+        </thead>
+        <tbody>
+
+          
+          {% for model in models %}
+              <tr class="items row ">
+                
+
+                <td class="col-3  align-self-center">{{model.name}}</td>
+                <td class="col-2 align-self-center">{{model.exam_duration}}</td>
+
+                {% if model.model_state == 1%}
+                <td class="col-2 align-self-center"><a href="#"><img width="18px" height="18px" src="../../../static/eExamApp/images/pencil.png" alt=""></a></td>
+                <td class="col-1 align-self-center"><a href="#"><img width="18px" height="18px" src="../../../static/eExamApp/images/delete.png" alt=""></a></td>
+                <td class="col-2">
+                  <input type="submit" class="btn btn-success  "  disabled value="تم الرفع " />
+  
+                  </td>
+  
+                  <td class="col-2">
+                    <form action="{% url 'cancel_model' %}?id={{model.id}}" method="post">
+                      {% csrf_token %}
+                      <input type="submit" class="btn btn-light "  value="تراجع " />
+  
+                    </form>  
+                    </td>
+                  {% elif model.model_state == 2%}
+                <td class="col-3 ">
+                  <div style="color: green;"> تم قبول النموذج</div>
+                </td>
+                
+                  <td class="col-4 align-self-center"> 2023/4/{{forloop.counter|add:forloop.counter}}<br> 12:00 مساءً - 12:00 مساءً </td>
+  
+  
+                  </td>
+                {% else %}
+                <td class="col-2 align-self-center"><a href="#"><img width="18px" height="18px" src="../../../static/eExamApp/images/pencil.png" alt=""></a></td>
+                <td class="col-1 align-self-center"><a href="#"><img width="18px" height="18px" src="../../../static/eExamApp/images/delete.png" alt=""></a></td>
+                <td class="col-2">
+                  <form action="{% url 'upload_model' %}?id={{model.id}}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-light  "  value="رفع" />
+
+                  </form>  
+                  </td>
+  
+                  <td class="col-2">
+                    <input type="submit" class="btn btn-light " disabled value="تراجع " />
+    
+                    </td>
+                    {% endif %}
+                    
+              </tr>
+              {% empty %}
+
+              <tr class="items row justify-content-center ">
+
+                <td class=" align-self-center">{{error}}</td>
+              </tr>
+
+          {% endfor%}
+        
+
+        <tr>
+
+        <tr class="items row justify-content-center">            
+            <th class="col-6">
+              <form action="{% url 'new_model' %}" method="post">
+                {% csrf_token %} 
+                <input type="text" hidden value="{{level}}" name="level">
+                <input type="text" hidden value="{{specialization}}" name="specialization">
+                <input type="text" hidden value="{{decision}}" name="decision">
+
+                <svg id="plus-circle-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="15.394" height="15.394" viewBox="0 0 26.394 26.394">
+                  <path id="Path_11" data-name="Path 11" d="M13.515,6a1.253,1.253,0,0,1,1.253,1.253v5.01h5.01a1.253,1.253,0,1,1,0,2.505h-5.01v5.01a1.253,1.253,0,0,1-2.505,0v-5.01H7.253a1.253,1.253,0,1,1,0-2.505h5.01V7.253A1.253,1.253,0,0,1,13.515,6Z" transform="translate(-0.318 -0.318)" fill="#08a1ff"/>
+                  <path id="Path_12" data-name="Path 12" d="M1,14.2a13.2,13.2,0,1,1,13.2,13.2A13.2,13.2,0,0,1,1,14.2ZM14.2,3.4a10.8,10.8,0,1,0,10.8,10.8A10.8,10.8,0,0,0,14.2,3.4Z" transform="translate(-1 -1)" fill="#08a1ff" fill-rule="evenodd"/>
+                </svg>  
+                <input type="submit" value="نموذج جديد" class="btn btn-link new_model">
+               
+  
+              
+              </form>
+
+          </th>
+ 
+          </tr>
+
+        </tbody>
+      </table></div>
+
+
+
+      
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5 " id="exampleModalLabel">رفع مقرر</h1>
+      </div>
+      <div class="modal-body row justify-content-center">
+
+        <button type="button" class="btn btn-link col-4 p-0" data-bs-dismiss="modal"> إستعراض الملفات</button>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">حفظ</button>
+      </div>
+    </div>
+  </div>
+</div>
