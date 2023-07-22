@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../static/eExamApp/bootstap/bootstrap.css">
+    <link rel="stylesheet" href="../../../static/eExamApp/main/other_css2.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div class=" small-container " id="collapseExample"> 
+        <table class="table row table2">
+        <thead class="e-exam-primary-color">
+     
+          <tr class="row justify-content-center">
+             
+    
+            <th class="col-4">المحاضرات </th>
+
+        
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="items row justify-content-between">
+    
+            <td class="col-4  align-self-center">برمجة 1</td>
+            <td class=" col-2">
+                <form action="{% url 'lecture' %}" method="post">
+                  {% csrf_token %}
+                <input type="submit" class="btn btn-light  "  value="تنزيل" />
+      
+                </form>
+      
+                </td>
+        </tr>
+    
+
+        </tbody>
+      </table></div>
+
+      <script src="../../../static/eExamApp/js/popper.min.js"></script>
+      <script src="../../../static/eExamApp/js/jquery-3.6.3.min.js"></script>
+      <script src="../../../static/eExamApp/js/bootstrap.js"></script>
+      <script src="../../../static/eExamApp/js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<div class="small-container small-container2"  > 
+    <table class="table row table2" >
+    <thead class="e-exam-primary-color">
+ 
+      <tr class="row justify-content-center">
+
+        <th class="col-4"> المقررات</th>
+
+
+    
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="items row justify-content-between ">
+
+        <td class="col-4  align-self-center">برمجة 1</td>
+        <td class=" col-4">
+            <form action="{% url 'lecture' %}" method="post">
+              {% csrf_token %}
+            <input type="submit" class="btn btn-light  "  value="عرض المحاضرات" />
+  
+            </form>
+  
+            </td>
+            </tr>
+            <tr class="items row justify-content-between ">
+
+              <td class="col-4  align-self-center"> ويب</td>
+              <td class=" col-4">
+                  <form action="{% url 'lecture' %}" method="post">
+                    {% csrf_token %}
+                  <input type="submit" class="btn btn-light  "  value="عرض المحاضرات" />
+        
+                  </form>
+        
+                  </td>
+                  </tr>
+                  <tr class="items row justify-content-between ">
+
+                    <td class="col-4  align-self-center"> رياضيات</td>
+                    <td class=" col-4">
+                        <form action="{% url 'lecture' %}" method="post">
+                          {% csrf_token %}
+                        <input type="submit" class="btn btn-light  "  value="عرض المحاضرات" />
+              
+                        </form>
+              
+                        </td>
+                        </tr>
+                        <tr class="items row justify-content-between ">
+
+                          <td class="col-4  align-self-center">لغة عربية</td>
+                          <td class=" col-4">
+                              <form action="{% url 'lecture' %}" method="post">
+                                {% csrf_token %}
+                              <input type="submit" class="btn btn-light  "  value="عرض المحاضرات" />
+                    
+                              </form>
+                    
+                              </td>
+                              </tr>
+                              <tr class="items row justify-content-between ">
+
+                                <td class="col-4  align-self-center">لغة انجليزية</td>
+                                <td class=" col-4">
+                                    <form action="{% url 'lecture' %}" method="post">
+                                      {% csrf_token %}
+                                    <input type="submit" class="btn btn-light  "  value="عرض المحاضرات" />
+                          
+                                    </form>
+                          
+                                    </td>
+                                    </tr>
+                                    <tr class="items row justify-content-between ">
+
+                                      <td class="col-4  align-self-center">قواعد بيانات</td>
+                                      <td class=" col-4">
+                                          <form action="{% url 'lecture' %}" method="post">
+                                            {% csrf_token %}
+                                          <input type="submit" class="btn btn-light  "  value="عرض المحاضرات" />
+                                
+                                          </form>
+                                
+                                          </td>
+                                          </tr>
+
+      
+    </tbody>
+  </table></div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="../../../static/eExamApp/bootstap/bootstrap.css">
+    <link rel="stylesheet" href="../../static/eExamApp/main/model_style.css">
+
+  </head>
+  <body dir="ltr">
+    <div class="form-container">
+      <form action="{% url 'new_model' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="form-title">نموذج جديد</div>
+        <div class="form-field">
+          <label class="form-lable" for="name">إسم النموذج</label>
+          <input type="text" id="name" name="name" placeholder="ادخل اسم النموذج">   
+        </div>
+       
+
+              <div class="select-container ">
+
+  
+                <div >
+                  <label for="duration"> الزمن</label>
+                <select class=""  name="duration" >
+                    <option value="30:00" >30 دقيقة</option>
+                    <option value="45:00">45 دقيقة</option>
+                    <option value="01:00:00">ساعة</option>
+                    <option value="01:30:00">ساعة و 30 دقيقة</option>
+                    <option value="01:45:00">ساعة و 45 دقيقة</option>
+                    <option value="02:00:00"> ساعتين</option>
+                  </select> 
+                </div> 
+  
+                 
+  
+                </div>
+            
+
+
+            {% if model_error %}
+            <div dir="rtl" class="alert alert-danger p-2 mt-4" style="font-size: 15px;text-align: center;" role="alert">{{model_error}}</div>
+
+           {% endif %}
+           <input type="text" hidden value="{{level}}" name="level">
+                <input type="text" hidden value="{{specialization}}" name="specialization">
+                <input type="text" hidden value="{{decision}}" name="decision">
+
+        <input type="submit" value="إنشاء">
+    </form>
+
+    </div>
+
+
+    
+  </body>
+</html>
